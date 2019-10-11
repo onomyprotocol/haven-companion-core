@@ -55,7 +55,7 @@
     "node": ">=8.9"
   },
   "dependencies": {
-    "natural-rights-chaingun": "git+ssh://gitlab.com/nodehaven/natural-rights-chaingun.git#v0.0.3"
+    "@natural-rights/chaingun": "git+ssh://gitlab.com/nodehaven/natural-rights-chaingun.git#v0.0.4"
   },
   "devDependencies": {
     "@bitjson/npm-scripts-info": "^1.0.0",

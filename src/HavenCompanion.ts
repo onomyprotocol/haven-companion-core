@@ -100,7 +100,7 @@ export class HavenCompanion {
       throw new Error('HavenID is required')
     }
     const gun = await this.provider.getGun(account)
-    await gun.authorizeDevice(client.clientId)
+    await gun.authorizeClient(client.clientId)
     return {
       account,
       beganAt: new Date(),
@@ -116,7 +116,7 @@ export class HavenCompanion {
    */
   public async revokeLogin(login: HavenIdAccountLogin): Promise<void> {
     const gun = await this.provider.getGun(login.account)
-    await gun.deauthorizeDevice(login.client.clientId)
+    await gun.deauthorizeClient(login.client.clientId)
   }
 
   /**

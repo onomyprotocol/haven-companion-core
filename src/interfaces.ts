@@ -1,4 +1,4 @@
-import { NaturalRightsChainGun } from 'natural-rights-chaingun'
+import { NaturalRightsChainGun } from '@natural-rights/chaingun'
 
 /**
  * A Specific HavenID implementation

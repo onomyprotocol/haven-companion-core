@@ -1,4 +1,4 @@
-import { NaturalRightsChainGun } from 'natural-rights-chaingun'
+import { NaturalRightsChainGun } from '@natural-rights/chaingun'
 import {
   HavenId,
   HavenIdAccount,
@@ -70,7 +70,7 @@ export default function initLocalStorageProvider({
 
     const credentials = await gun.newSession()
     // TODO: Actual implementations should prove Haven ID here
-    const accountId = gun.userId()
+    const accountId = gun.accountId()
 
     if (!accountId) {
       throw new Error('Account creation failed')
@@ -131,7 +131,7 @@ export default function initLocalStorageProvider({
     const [cryptKeyPair, signKeyPair] = _readCredentials(account)
     await gun.login(cryptKeyPair, signKeyPair)
 
-    if (gun.userId() !== account.accountId) {
+    if (gun.accountId() !== account.accountId) {
       throw new Error('Login failed')
     }
 
@@ -163,8 +163,8 @@ interface LocalStorageHavenIdData {
     alias: string
     fullName: string
     readonly credentials: {
-      readonly deviceCryptKeyPair: KeyPair
-      readonly deviceSignKeyPair: KeyPair
+      readonly clientCryptKeyPair: KeyPair
+      readonly clientSignKeyPair: KeyPair
     }
   }
 }
@@ -188,7 +188,7 @@ function _readCredentials(
   }
 
   return [
-    accountData.credentials.deviceCryptKeyPair,
-    accountData.credentials.deviceSignKeyPair
+    accountData.credentials.clientCryptKeyPair,
+    accountData.credentials.clientSignKeyPair
   ]
 }
